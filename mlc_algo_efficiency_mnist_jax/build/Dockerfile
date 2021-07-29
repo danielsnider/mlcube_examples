@@ -20,9 +20,9 @@ RUN curl -fSsL -O https://bootstrap.pypa.io/get-pip.py && \
 COPY requirements.txt /requirements.txt
 RUN pip3 install --no-cache-dir -r /requirements.txt
 
-COPY matmul.py /workspace/matmul.py
+COPY mlc_algo_efficiency_mnist_jax.py /workspace/mlc_algo_efficiency_mnist_jax.py
 
 # defult parameter to ENTRYPOINT 
 # CMD  ["10"]
 
-ENTRYPOINT ["python3", "/workspace/matmul.py"]
+ENTRYPOINT ["python3", "/workspace/mlc_algo_efficiency_mnist_jax.py"]
