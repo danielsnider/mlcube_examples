@@ -1,3 +1,39 @@
+# MLCommons MNIST JAX Workload
+
+
+### Connect and run
+```
+ssh eco-13
+tmux attach
+# do not attach to docker (we need to create docker containers)
+source ~/env/bin/activate
+cd ~/mlcube_examples/mlc_algo_efficiency_mnist_jax
+mlcube_docker configure --mlcube=. --platform=platforms/docker.yaml
+mlcube_docker run --mlcube=. --platform=platforms/docker.yaml --task=run/download_imagenette.yaml
+mlcube_docker run --mlcube=. --platform=platforms/docker.yaml --task=run/train_imagenette.yaml
+```
+
+### Run MNIST algo workload
+```
+python submission_runner.py \
+--workload=mnist_jax \
+--submission_path=workloads/mnist_jax/submission.py \
+--tuning_ruleset=external \
+--tuning_search_space=workloads/mnist_jax/tuning_search_space.json \
+--num_tuning_trials=3
+
+python submission_runner.py --flagfile=
+
+```
+
+
+### submission_runner.py FLAGS
+```
+SEE flags-nope.py
+```
+
+# OLD BELOW
+
 # MNIST MLCube
 
 ## Create and initialize python environment
